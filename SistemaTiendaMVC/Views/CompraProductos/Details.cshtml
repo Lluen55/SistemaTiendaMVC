@@ -1,0 +1,63 @@
+﻿@model SistemaTiendaMVC.Models.CompraProducto
+
+@{
+    ViewData["Title"] = "Detalle de Compra";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <div>
+        <h4>CompraProducto</h4>
+        <hr/>
+        <dl class="row">
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Proveedor)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Proveedor.RazonSocial)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Producto.NombreProducto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Producto.Descripcion)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CantidadProducto)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CantidadProducto)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PrecioUnitarioCompra)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PrecioUnitarioCompra)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.PrecioUnitarioVenta)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.PrecioUnitarioVenta)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.CostoTotal)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.CostoTotal)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.FechaCompra)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-success">Editar</a>
+        <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+    </div>
+</div>

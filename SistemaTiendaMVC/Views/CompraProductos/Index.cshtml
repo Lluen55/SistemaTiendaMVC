@@ -1,0 +1,81 @@
+﻿@model IEnumerable<SistemaTiendaMVC.Models.CompraProducto>
+
+@{
+    ViewData["Title"] = "Compra de Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Agregar Nueva</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Proveedor)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioUnitarioCompra)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.PrecioUnitarioVenta)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaCompra)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Proveedor.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioUnitarioCompra)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PrecioUnitarioVenta)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaCompra)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-light">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">
+                        <i class="fas fa-clipboard-list"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>

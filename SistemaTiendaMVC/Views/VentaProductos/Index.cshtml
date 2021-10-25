@@ -1,0 +1,87 @@
+﻿@model IEnumerable<SistemaTiendaMVC.Models.VentaProducto>
+
+@{
+    ViewData["Title"] = "Venta de Productos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-action="Create" class="btn btn-primary">Nueva Venta</a>
+    </p>
+    <table class="table">
+        <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Cliente)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Producto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadProducto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CantidadTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.CostoTotal)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImporteRecibido)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.ImporteCambio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaRegistro)
+            </th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cliente.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Producto.Descripcion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadProducto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CantidadTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.CostoTotal)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImporteRecibido)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.ImporteCambio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FechaRegistro)
+                </td>
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-light">
+                        <i class="fas fa-edit"></i>
+                    </a>
+                    <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-info">
+                        <i class="fas fa-clipboard-list"></i>
+                    </a>
+                    <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-warning">
+                        <i class="fas fa-trash-alt"></i>
+                    </a>
+                </td>
+            </tr>
+        }
+        </tbody>
+    </table>
+</div>
