@@ -22,7 +22,7 @@ namespace SistemaTiendaMVC.Controllers
         // GET: VentaProductos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.VentaProducto.Include(v => v.Cliente).Include(v => v.Producto);
+            var applicationDbContext = _context.VentaProducto.Include(v => v.Cliente);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -36,7 +36,6 @@ namespace SistemaTiendaMVC.Controllers
 
             var ventaProducto = await _context.VentaProducto
                 .Include(v => v.Cliente)
-                .Include(v => v.Producto)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (ventaProducto == null)
             {
@@ -49,8 +48,7 @@ namespace SistemaTiendaMVC.Controllers
         // GET: VentaProductos/Create
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre");
-            ViewData["ProductoId"] = new SelectList(_context.Producto, "Id", "NombreProducto");
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion");
             return View();
         }
 
@@ -59,10 +57,7 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(
-            [Bind(
-                "Id,ClienteId,ProductoId,CantidadProducto,CantidadTotal,CostoTotal,ImporteRecibido,ImporteCambio,FechaRegistro")]
-            VentaProducto ventaProducto)
+        public async Task<IActionResult> Create([Bind("Id,ClienteId,TotalProductos,CantidadPorProducto,ImporteTotal,ImporteRecibido,ImporteCambio,FechaRegistro")] VentaProducto ventaProducto)
         {
             if (ModelState.IsValid)
             {
@@ -70,10 +65,7 @@ namespace SistemaTiendaMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre", ventaProducto.ClienteId);
-            ViewData["ProductoId"] =
-                new SelectList(_context.Producto, "Id", "NombreProducto", ventaProducto.ProductoId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion", ventaProducto.ClienteId);
             return View(ventaProducto);
         }
 
@@ -90,10 +82,7 @@ namespace SistemaTiendaMVC.Controllers
             {
                 return NotFound();
             }
-
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre", ventaProducto.ClienteId);
-            ViewData["ProductoId"] =
-                new SelectList(_context.Producto, "Id", "NombreProducto", ventaProducto.ProductoId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion", ventaProducto.ClienteId);
             return View(ventaProducto);
         }
 
@@ -102,10 +91,7 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id,
-            [Bind(
-                "Id,ClienteId,ProductoId,CantidadProducto,CantidadTotal,CostoTotal,ImporteRecibido,ImporteCambio,FechaRegistro")]
-            VentaProducto ventaProducto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,TotalProductos,CantidadPorProducto,ImporteTotal,ImporteRecibido,ImporteCambio,FechaRegistro")] VentaProducto ventaProducto)
         {
             if (id != ventaProducto.Id)
             {
@@ -130,13 +116,9 @@ namespace SistemaTiendaMVC.Controllers
                         throw;
                     }
                 }
-
                 return RedirectToAction(nameof(Index));
             }
-
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre", ventaProducto.ClienteId);
-            ViewData["ProductoId"] =
-                new SelectList(_context.Producto, "Id", "NombreProducto", ventaProducto.ProductoId);
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion", ventaProducto.ClienteId);
             return View(ventaProducto);
         }
 
@@ -150,7 +132,6 @@ namespace SistemaTiendaMVC.Controllers
 
             var ventaProducto = await _context.VentaProducto
                 .Include(v => v.Cliente)
-                .Include(v => v.Producto)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (ventaProducto == null)
             {

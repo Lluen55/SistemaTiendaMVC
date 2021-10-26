@@ -1,4 +1,4 @@
-﻿@model SistemaTiendaMVC.Models.VentaProducto
+﻿@model SistemaTiendaMVC.Models.DetalleVentaProducto
 
 @{
     ViewData["Title"] = "Details";
@@ -8,20 +8,14 @@
 <h1>Details</h1>
 
 <div>
-    <h4>VentaProducto</h4>
+    <h4>DetalleVentaProducto</h4>
     <hr />
     <dl class="row">
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.Cliente)
+            @Html.DisplayNameFor(model => model.VentasProducto)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.Cliente.Direccion)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.TotalProductos)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.TotalProductos)
+            @Html.DisplayFor(model => model.VentasProducto.Id)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.CantidadPorProducto)
@@ -30,22 +24,16 @@
             @Html.DisplayFor(model => model.CantidadPorProducto)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImporteTotal)
+            @Html.DisplayNameFor(model => model.PrecioUnitarioVenta)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImporteTotal)
+            @Html.DisplayFor(model => model.PrecioUnitarioVenta)
         </dd>
         <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImporteRecibido)
+            @Html.DisplayNameFor(model => model.ImporteTotalPorProducto)
         </dt>
         <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImporteRecibido)
-        </dd>
-        <dt class = "col-sm-2">
-            @Html.DisplayNameFor(model => model.ImporteCambio)
-        </dt>
-        <dd class = "col-sm-10">
-            @Html.DisplayFor(model => model.ImporteCambio)
+            @Html.DisplayFor(model => model.ImporteTotalPorProducto)
         </dd>
         <dt class = "col-sm-2">
             @Html.DisplayNameFor(model => model.FechaRegistro)

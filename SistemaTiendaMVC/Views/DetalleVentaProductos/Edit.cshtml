@@ -1,4 +1,4 @@
-﻿@model SistemaTiendaMVC.Models.VentaProducto
+﻿@model SistemaTiendaMVC.Models.DetalleVentaProducto
 
 @{
     ViewData["Title"] = "Edit";
@@ -7,7 +7,7 @@
 
 <h1>Edit</h1>
 
-<h4>VentaProducto</h4>
+<h4>DetalleVentaProducto</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -15,14 +15,9 @@
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <input type="hidden" asp-for="Id" />
             <div class="form-group">
-                <label asp-for="ClienteId" class="control-label"></label>
-                <select asp-for="ClienteId" class="form-control" asp-items="ViewBag.ClienteId"></select>
-                <span asp-validation-for="ClienteId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalProductos" class="control-label"></label>
-                <input asp-for="TotalProductos" class="form-control" />
-                <span asp-validation-for="TotalProductos" class="text-danger"></span>
+                <label asp-for="VentasProductoId" class="control-label"></label>
+                <select asp-for="VentasProductoId" class="form-control" asp-items="ViewBag.VentasProductoId"></select>
+                <span asp-validation-for="VentasProductoId" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="CantidadPorProducto" class="control-label"></label>
@@ -30,19 +25,14 @@
                 <span asp-validation-for="CantidadPorProducto" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImporteTotal" class="control-label"></label>
-                <input asp-for="ImporteTotal" class="form-control" />
-                <span asp-validation-for="ImporteTotal" class="text-danger"></span>
+                <label asp-for="PrecioUnitarioVenta" class="control-label"></label>
+                <input asp-for="PrecioUnitarioVenta" class="form-control" />
+                <span asp-validation-for="PrecioUnitarioVenta" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="ImporteRecibido" class="control-label"></label>
-                <input asp-for="ImporteRecibido" class="form-control" />
-                <span asp-validation-for="ImporteRecibido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImporteCambio" class="control-label"></label>
-                <input asp-for="ImporteCambio" class="form-control" />
-                <span asp-validation-for="ImporteCambio" class="text-danger"></span>
+                <label asp-for="ImporteTotalPorProducto" class="control-label"></label>
+                <input asp-for="ImporteTotalPorProducto" class="form-control" />
+                <span asp-validation-for="ImporteTotalPorProducto" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="FechaRegistro" class="control-label"></label>
