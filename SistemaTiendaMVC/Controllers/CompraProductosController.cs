@@ -22,7 +22,7 @@ namespace SistemaTiendaMVC.Controllers
         // GET: CompraProductos
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.CompraProducto.Include(c => c.Producto).Include(c => c.Proveedor);
+            var applicationDbContext = _context.CompraProducto.Include(c => c.Proveedor);
             return View(await applicationDbContext.ToListAsync());
         }
 
@@ -35,7 +35,6 @@ namespace SistemaTiendaMVC.Controllers
             }
 
             var compraProducto = await _context.CompraProducto
-                .Include(c => c.Producto)
                 .Include(c => c.Proveedor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (compraProducto == null)
@@ -49,7 +48,6 @@ namespace SistemaTiendaMVC.Controllers
         // GET: CompraProductos/Create
         public IActionResult Create()
         {
-            ViewData["ProductoId"] = new SelectList(_context.Producto, "Id", "NombreProducto");
             ViewData["ProveedorId"] = new SelectList(_context.Proveedor, "Id", "RazonSocial");
             return View();
         }
@@ -59,7 +57,7 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ProveedorId,ProductoId,CantidadProducto,PrecioUnitarioCompra,PrecioUnitarioVenta,CostoTotal,FechaCompra")] CompraProducto compraProducto)
+        public async Task<IActionResult> Create([Bind("Id,ProveedorId,CantidadPorProducto,FechaCompra")] CompraProducto compraProducto)
         {
             if (ModelState.IsValid)
             {
@@ -67,7 +65,6 @@ namespace SistemaTiendaMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductoId"] = new SelectList(_context.Producto, "Id", "NombreProducto", compraProducto.ProductoId);
             ViewData["ProveedorId"] = new SelectList(_context.Proveedor, "Id", "RazonSocial", compraProducto.ProveedorId);
             return View(compraProducto);
         }
@@ -85,7 +82,6 @@ namespace SistemaTiendaMVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["ProductoId"] = new SelectList(_context.Producto, "Id", "NombreProducto", compraProducto.ProductoId);
             ViewData["ProveedorId"] = new SelectList(_context.Proveedor, "Id", "RazonSocial", compraProducto.ProveedorId);
             return View(compraProducto);
         }
@@ -95,7 +91,7 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ProveedorId,ProductoId,CantidadProducto,PrecioUnitarioCompra,PrecioUnitarioVenta,CostoTotal,FechaCompra")] CompraProducto compraProducto)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,ProveedorId,CantidadPorProducto,FechaCompra")] CompraProducto compraProducto)
         {
             if (id != compraProducto.Id)
             {
@@ -122,7 +118,6 @@ namespace SistemaTiendaMVC.Controllers
                 }
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ProductoId"] = new SelectList(_context.Producto, "Id", "NombreProducto", compraProducto.ProductoId);
             ViewData["ProveedorId"] = new SelectList(_context.Proveedor, "Id", "RazonSocial", compraProducto.ProveedorId);
             return View(compraProducto);
         }
@@ -136,7 +131,6 @@ namespace SistemaTiendaMVC.Controllers
             }
 
             var compraProducto = await _context.CompraProducto
-                .Include(c => c.Producto)
                 .Include(c => c.Proveedor)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (compraProducto == null)

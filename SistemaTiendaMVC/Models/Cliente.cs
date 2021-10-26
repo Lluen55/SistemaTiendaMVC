@@ -27,11 +27,16 @@ namespace SistemaTiendaMVC.Models
         [Required]
         [Display(Name = "Teléfono")]
         [DataType(DataType.PhoneNumber)]
-        public string telefono { get; set; }
+        public string Telefono { get; set; }
 
         [Required]
         [Display(Name = "Email")]
         [DataType(DataType.EmailAddress)]
         public string Email { get; set; }
+
+        [Required]
+        [Display(Name = "Fecha de Registro")]
+        //[DataType(DataType.DateTime)]
+        public DateTime FechaRegistro { get; set; }
     }
 }

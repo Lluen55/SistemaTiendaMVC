@@ -1,63 +1,61 @@
 ﻿@model SistemaTiendaMVC.Models.VentaProducto
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Registrar Venta";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h1>Create</h1>
+<div class="container">
+    <h1>@ViewData["Title"]</h1>
 
-<h4>VentaProducto</h4>
-<hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group">
-                <label asp-for="ClienteId" class="control-label"></label>
-                <select asp-for="ClienteId" class ="form-control" asp-items="ViewBag.ClienteId"></select>
-            </div>
-            <div class="form-group">
-                <label asp-for="TotalProductos" class="control-label"></label>
-                <input asp-for="TotalProductos" class="form-control" />
-                <span asp-validation-for="TotalProductos" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="CantidadPorProducto" class="control-label"></label>
-                <input asp-for="CantidadPorProducto" class="form-control" />
-                <span asp-validation-for="CantidadPorProducto" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImporteTotal" class="control-label"></label>
-                <input asp-for="ImporteTotal" class="form-control" />
-                <span asp-validation-for="ImporteTotal" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImporteRecibido" class="control-label"></label>
-                <input asp-for="ImporteRecibido" class="form-control" />
-                <span asp-validation-for="ImporteRecibido" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="ImporteCambio" class="control-label"></label>
-                <input asp-for="ImporteCambio" class="form-control" />
-                <span asp-validation-for="ImporteCambio" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="FechaRegistro" class="control-label"></label>
-                <input asp-for="FechaRegistro" class="form-control" />
-                <span asp-validation-for="FechaRegistro" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
-            </div>
-        </form>
+    <hr/>
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="ClienteId" class="control-label"></label>
+                    <select asp-for="ClienteId" class="form-select" asp-items="ViewBag.ClienteId"></select>
+                </div>
+                <div class="form-group">
+                    <label asp-for="TotalProductos" class="control-label"></label>
+                    <input asp-for="TotalProductos" class="form-control"/>
+                    <span asp-validation-for="TotalProductos" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="CantidadPorProducto" class="control-label"></label>
+                    <input asp-for="CantidadPorProducto" class="form-control"/>
+                    <span asp-validation-for="CantidadPorProducto" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImporteTotal" class="control-label"></label>
+                    <input asp-for="ImporteTotal" class="form-control"/>
+                    <span asp-validation-for="ImporteTotal" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImporteRecibido" class="control-label"></label>
+                    <input asp-for="ImporteRecibido" class="form-control"/>
+                    <span asp-validation-for="ImporteRecibido" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="ImporteCambio" class="control-label"></label>
+                    <input asp-for="ImporteCambio" class="form-control"/>
+                    <span asp-validation-for="ImporteCambio" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="FechaRegistro" class="control-label"></label>
+                    <input asp-for="FechaRegistro" class="form-control"/>
+                    <span asp-validation-for="FechaRegistro" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Guardar" class="btn btn-success"/>
+                    <a asp-action="Index" class="btn btn-secondary">Regresar</a>
+                </div>
+            </form>
+        </div>
     </div>
 </div>
 
-<div>
-    <a asp-action="Index">Back to List</a>
-</div>
-
 @section Scripts {
-    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
 }

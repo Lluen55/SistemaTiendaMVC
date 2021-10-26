@@ -48,7 +48,7 @@ namespace SistemaTiendaMVC.Controllers
         // GET: VentaProductos/Create
         public IActionResult Create()
         {
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion");
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre");
             return View();
         }
 
@@ -57,7 +57,10 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,ClienteId,TotalProductos,CantidadPorProducto,ImporteTotal,ImporteRecibido,ImporteCambio,FechaRegistro")] VentaProducto ventaProducto)
+        public async Task<IActionResult> Create(
+            [Bind(
+                "Id,ClienteId,TotalProductos,CantidadPorProducto,ImporteTotal,ImporteRecibido,ImporteCambio,FechaRegistro")]
+            VentaProducto ventaProducto)
         {
             if (ModelState.IsValid)
             {
@@ -65,7 +68,8 @@ namespace SistemaTiendaMVC.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion", ventaProducto.ClienteId);
+
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre", ventaProducto.ClienteId);
             return View(ventaProducto);
         }
 
@@ -82,7 +86,8 @@ namespace SistemaTiendaMVC.Controllers
             {
                 return NotFound();
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion", ventaProducto.ClienteId);
+
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre", ventaProducto.ClienteId);
             return View(ventaProducto);
         }
 
@@ -91,7 +96,10 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,ClienteId,TotalProductos,CantidadPorProducto,ImporteTotal,ImporteRecibido,ImporteCambio,FechaRegistro")] VentaProducto ventaProducto)
+        public async Task<IActionResult> Edit(int id,
+            [Bind(
+                "Id,ClienteId,TotalProductos,CantidadPorProducto,ImporteTotal,ImporteRecibido,ImporteCambio,FechaRegistro")]
+            VentaProducto ventaProducto)
         {
             if (id != ventaProducto.Id)
             {
@@ -116,9 +124,11 @@ namespace SistemaTiendaMVC.Controllers
                         throw;
                     }
                 }
+
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Direccion", ventaProducto.ClienteId);
+
+            ViewData["ClienteId"] = new SelectList(_context.Cliente, "Id", "Nombre", ventaProducto.ClienteId);
             return View(ventaProducto);
         }
 

@@ -15,4 +15,22 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="Views\VentaProductos\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\VentaProductos\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\VentaProductos\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\VentaProductos\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\VentaProductos\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Proveedores\Index.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Create.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Delete.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Details.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Edit.cshtml" />
+    <_ContentIncludedByDefault Remove="Views\Clientes\Index.cshtml" />
+  </ItemGroup>
+
 </Project>

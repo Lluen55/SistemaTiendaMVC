@@ -54,6 +54,9 @@ namespace SistemaTiendaMVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Nombre")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -62,11 +65,11 @@ namespace SistemaTiendaMVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("TipoDocumento")
+                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("telefono")
+                    b.Property<string>("TipoDocumento")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -82,14 +85,37 @@ namespace SistemaTiendaMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
+                    b.Property<int>("CantidadPorProducto")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaCompra")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("ProveedorId")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("ProveedorId");
+
+                    b.ToTable("CompraProducto");
+                });
+
+            modelBuilder.Entity("SistemaTiendaMVC.Models.DetalleCompraProducto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
                     b.Property<int>("CantidadProducto")
+                        .HasColumnType("int");
+
+                    b.Property<int>("CompraProductoId")
                         .HasColumnType("int");
 
                     b.Property<double>("CostoTotal")
                         .HasColumnType("float");
-
-                    b.Property<DateTime>("FechaCompra")
-                        .HasColumnType("datetime2");
 
                     b.Property<double>("PrecioUnitarioCompra")
                         .HasColumnType("float");
@@ -100,16 +126,47 @@ namespace SistemaTiendaMVC.Migrations
                     b.Property<int>("ProductoId")
                         .HasColumnType("int");
 
-                    b.Property<int>("ProveedorId")
+                    b.HasKey("Id");
+
+                    b.HasIndex("CompraProductoId");
+
+                    b.HasIndex("ProductoId");
+
+                    b.ToTable("DetalleCompraProducto");
+                });
+
+            modelBuilder.Entity("SistemaTiendaMVC.Models.DetalleVentaProducto", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CantidadPorProducto")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
+
+                    b.Property<double>("ImporteTotalPorProducto")
+                        .HasColumnType("float");
+
+                    b.Property<double>("PrecioUnitarioVenta")
+                        .HasColumnType("float");
+
+                    b.Property<int>("ProductoId")
+                        .HasColumnType("int");
+
+                    b.Property<int>("VentasProductoId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ProductoId");
 
-                    b.HasIndex("ProveedorId");
+                    b.HasIndex("VentasProductoId");
 
-                    b.ToTable("CompraProducto");
+                    b.ToTable("DetalleVentaProducto");
                 });
 
             modelBuilder.Entity("SistemaTiendaMVC.Models.Producto", b =>
@@ -161,15 +218,21 @@ namespace SistemaTiendaMVC.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("RUC")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<bool>("Estado")
+                        .HasColumnType("bit");
+
+                    b.Property<DateTime>("FechaRegistro")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("RazonSocial")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("telefono")
+                    b.Property<string>("Ruc")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Telefono")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
@@ -185,17 +248,11 @@ namespace SistemaTiendaMVC.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("CantidadProducto")
-                        .HasColumnType("int");
-
-                    b.Property<int>("CantidadTotal")
+                    b.Property<int>("CantidadPorProducto")
                         .HasColumnType("int");
 
                     b.Property<int>("ClienteId")
                         .HasColumnType("int");
-
-                    b.Property<double>("CostoTotal")
-                        .HasColumnType("float");
 
                     b.Property<DateTime>("FechaRegistro")
                         .HasColumnType("datetime2");
@@ -206,19 +263,50 @@ namespace SistemaTiendaMVC.Migrations
                     b.Property<double>("ImporteRecibido")
                         .HasColumnType("float");
 
-                    b.Property<int>("ProductoId")
+                    b.Property<double>("ImporteTotal")
+                        .HasColumnType("float");
+
+                    b.Property<int>("TotalProductos")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
 
                     b.HasIndex("ClienteId");
 
-                    b.HasIndex("ProductoId");
-
                     b.ToTable("VentaProducto");
                 });
 
             modelBuilder.Entity("SistemaTiendaMVC.Models.CompraProducto", b =>
+                {
+                    b.HasOne("SistemaTiendaMVC.Models.Proveedor", "Proveedor")
+                        .WithMany()
+                        .HasForeignKey("ProveedorId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Proveedor");
+                });
+
+            modelBuilder.Entity("SistemaTiendaMVC.Models.DetalleCompraProducto", b =>
+                {
+                    b.HasOne("SistemaTiendaMVC.Models.CompraProducto", "CompraProducto")
+                        .WithMany()
+                        .HasForeignKey("CompraProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("SistemaTiendaMVC.Models.Producto", "Producto")
+                        .WithMany()
+                        .HasForeignKey("ProductoId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("CompraProducto");
+
+                    b.Navigation("Producto");
+                });
+
+            modelBuilder.Entity("SistemaTiendaMVC.Models.DetalleVentaProducto", b =>
                 {
                     b.HasOne("SistemaTiendaMVC.Models.Producto", "Producto")
                         .WithMany()
@@ -226,15 +314,15 @@ namespace SistemaTiendaMVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaTiendaMVC.Models.Proveedor", "Proveedor")
+                    b.HasOne("SistemaTiendaMVC.Models.VentaProducto", "VentasProducto")
                         .WithMany()
-                        .HasForeignKey("ProveedorId")
+                        .HasForeignKey("VentasProductoId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("Producto");
 
-                    b.Navigation("Proveedor");
+                    b.Navigation("VentasProducto");
                 });
 
             modelBuilder.Entity("SistemaTiendaMVC.Models.Producto", b =>
@@ -256,15 +344,7 @@ namespace SistemaTiendaMVC.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("SistemaTiendaMVC.Models.Producto", "Producto")
-                        .WithMany()
-                        .HasForeignKey("ProductoId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
                     b.Navigation("Cliente");
-
-                    b.Navigation("Producto");
                 });
 #pragma warning restore 612, 618
         }

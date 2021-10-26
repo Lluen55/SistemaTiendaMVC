@@ -8,7 +8,6 @@
 <div class="container">
     <h1>@ViewData["Title"]</h1>
 
-    <h4>Categoria</h4>
     <hr/>
     <div class="row">
         <div class="col-md-4">
@@ -19,7 +18,6 @@
                     <input asp-for="NombreCategoria" class="form-control"/>
                     <span asp-validation-for="NombreCategoria" class="text-danger"></span>
                 </div>
-
                 <div class="form-group">
                     <label class="form-label">Estado</label>
                     <select class="form-select" asp-for="Estado">
@@ -27,12 +25,10 @@
                         <option value="false">Inactivo</option>
                     </select>
                 </div>
-
                 <div class="form-group">
-                    <input type="submit" value="Crear" class="btn btn-success"/>
+                    <input type="submit" value="Guardar" class="btn btn-success"/>
                     <a asp-action="Index" class="btn btn-secondary">Regresar</a>
                 </div>
-
             </form>
         </div>
     </div>
