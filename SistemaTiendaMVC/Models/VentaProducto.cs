@@ -12,44 +12,32 @@ namespace SistemaTiendaMVC.Models
 
         [ForeignKey("ClienteId")] public Cliente Cliente { get; set; }
 
-        [Required] public int ProductoId { get; set; }
-
-        [ForeignKey("ProductoId")] public Producto Producto { get; set; }
-
-        [Required] public int CantidadProducto { get; set; }
-
-        [Required] public int CantidadTotal { get; set; }
+        [Required] public int TotalProductos { get; set; }
+        
+        [Required] public int CantidadPorProducto { get; set; }
 
         [Required]
         [Range(1, 100000)]
         [DisplayFormat(DataFormatString = "{0:C}")]
-        [Display(Name = "Costo Total")]
-        public double CostoTotal { get; set; }
+        [Display(Name = "Importe Total")]
+        public double ImporteTotal { get; set; }
 
         [Required]
         [Range(1, 100000)]
         [DisplayFormat(DataFormatString = "{0:C}")]
-        [Display(Name = "Precio Unitario de Compra")]
+        [Display(Name = "Monto de Pago")]
         public double ImporteRecibido { get; set; }
 
         [Required]
         [Range(1, 100000)]
         [DisplayFormat(DataFormatString = "{0:C}")]
-        [Display(Name = "Precio Unitario de Venta")]
+        [Display(Name = "Cambio")]
         public double ImporteCambio { get; set; }
 
         [Required]
         [Display(Name = "Fecha de Venta")]
-        [DataType(DataType.Date)]
+        [DataType(DataType.DateTime)]
         public DateTime FechaRegistro { get; set; }
         
-        
-        // [Required]
-        // [Display(Name = "Tipo de Comprobante")]
-        // public string TipoComprobante { get; set; }
-        //
-        // [Required]
-        // [Display(Name = "Número de Comprobante")]
-        // public string NumComprobante { get; set; }
     }
 }

@@ -14,6 +14,8 @@ namespace SistemaTiendaMVC.Data
         public DbSet<SistemaTiendaMVC.Models.Cliente> Cliente { get; set; }
         public DbSet<SistemaTiendaMVC.Models.CompraProducto> CompraProducto { get; set; }
         public DbSet<SistemaTiendaMVC.Models.VentaProducto> VentaProducto { get; set; }
+        public DbSet<SistemaTiendaMVC.Models.DetalleCompraProducto> DetalleCompraProducto { get; set; }
+        public DbSet<SistemaTiendaMVC.Models.DetalleVentaProducto> DetalleVentaProducto { get; set; }
 
         
     }

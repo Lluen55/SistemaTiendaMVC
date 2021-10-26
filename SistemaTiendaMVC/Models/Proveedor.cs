@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace SistemaTiendaMVC.Models
 {
@@ -6,7 +7,8 @@ namespace SistemaTiendaMVC.Models
     {
         [Key] public int Id { get; set; }
 
-        [Required] public string RUC { get; set; }
+        [Display(Name = "RUC")]
+        [Required] public string Ruc { get; set; }
 
         [Required]
         [Display(Name = "Razon Social")]
@@ -20,10 +22,17 @@ namespace SistemaTiendaMVC.Models
         [Required]
         [Display(Name = "Teléfono")]
         [DataType(DataType.PhoneNumber)]
-        public string telefono { get; set; }
+        public string Telefono { get; set; }
 
         [Required]
         [Display(Name = "Dirección")]
         public string Direccion { get; set; }
+        
+        [Required] public bool Estado { get; set; }
+        
+        [Required]
+        [Display(Name = "Fecha de Registro")]
+        [DataType(DataType.Date)]
+        public DateTime FechaRegistro { get; set; }
     }
 }

@@ -1,7 +1,7 @@
 ﻿@model SistemaTiendaMVC.Models.CompraProducto
 
 @{
-    ViewData["Title"] = "Eliminar Compra";
+    ViewData["Title"] = "Delete";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
@@ -10,44 +10,19 @@
 
     <h3>¿Estás seguro de eliminar esta compra?</h3>
     <div>
-        <h4>CompraProducto</h4>
         <hr/>
         <dl class="row">
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.Proveedor)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Proveedor.RazonSocial)
+                @Html.DisplayFor(model => model.Proveedor.Direccion)
             </dd>
             <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Producto.NombreProducto)
+                @Html.DisplayNameFor(model => model.CantidadPorProducto)
             </dt>
             <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.Producto.Descripcion)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CantidadProducto)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CantidadProducto)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PrecioUnitarioCompra)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PrecioUnitarioCompra)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.PrecioUnitarioVenta)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.PrecioUnitarioVenta)
-            </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.CostoTotal)
-            </dt>
-            <dd class="col-sm-10">
-                @Html.DisplayFor(model => model.CostoTotal)
+                @Html.DisplayFor(model => model.CantidadPorProducto)
             </dd>
             <dt class="col-sm-2">
                 @Html.DisplayNameFor(model => model.FechaCompra)
