@@ -1,4 +1,4 @@
-﻿@model IEnumerable<SistemaTiendaMVC.Models.Cliente>
+﻿@model IEnumerable<SistemaTiendaMVC.Models.DetalleVentaProducto>
 
 @{
     ViewData["Title"] = "Index";
@@ -14,22 +14,16 @@
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.TipoDocumento)
+                @Html.DisplayNameFor(model => model.VentasProducto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.NumDocumento)
+                @Html.DisplayNameFor(model => model.CantidadPorProducto)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Nombre)
+                @Html.DisplayNameFor(model => model.PrecioUnitarioVenta)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Direccion)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Telefono)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Email)
+                @Html.DisplayNameFor(model => model.ImporteTotalPorProducto)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.FechaRegistro)
@@ -41,22 +35,16 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.TipoDocumento)
+                @Html.DisplayFor(modelItem => item.VentasProducto.Id)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.NumDocumento)
+                @Html.DisplayFor(modelItem => item.CantidadPorProducto)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Nombre)
+                @Html.DisplayFor(modelItem => item.PrecioUnitarioVenta)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Direccion)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Telefono)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Email)
+                @Html.DisplayFor(modelItem => item.ImporteTotalPorProducto)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.FechaRegistro)

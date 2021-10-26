@@ -54,7 +54,7 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,TipoDocumento,NumDocumento,Nombre,Direccion,telefono,Email")] Cliente cliente)
+        public async Task<IActionResult> Create([Bind("Id,TipoDocumento,NumDocumento,Nombre,Direccion,Telefono,Email,FechaRegistro")] Cliente cliente)
         {
             if (ModelState.IsValid)
             {
@@ -86,7 +86,7 @@ namespace SistemaTiendaMVC.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,TipoDocumento,NumDocumento,Nombre,Direccion,telefono,Email")] Cliente cliente)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,TipoDocumento,NumDocumento,Nombre,Direccion,Telefono,Email,FechaRegistro")] Cliente cliente)
         {
             if (id != cliente.Id)
             {
